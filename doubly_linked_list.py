@@ -96,6 +96,18 @@ class DoublyLinkedList(object):
             return _reverse_recursive(current_node.prev)
         self.head =_reverse_recursive(self.head)
 
+    def sort(self) -> None:
+        current_node = self.head
+        if current_node is None:
+            return
+        while current_node.next:
+            next_node = current_node.next
+            while next_node:
+                if current_node.data > next_node.data:
+                    current_node.data, next_node.data = next_node.data, current_node.data
+                next_node = next_node.next
+            current_node = current_node.next
+
 
 d_l = DoublyLinkedList()
 d_l.remove(1)
@@ -116,4 +128,8 @@ d_l.reverse_iterative()
 d_l.print()
 print("*************")
 d_l.reverse_recursive()
+d_l.print()
+print("*************")
+print("*************")
+d_l.sort()
 d_l.print()
